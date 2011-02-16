@@ -1,5 +1,5 @@
 h1. Android Videokit
 
-This is a repository to make it relatively simple to fetch and build the latest FFMPEG and libx264 to run on Android, using the Android NDK.
+This is a repository to make it relatively simple to fetch and build the latest FFMPEG and libx264 to run on Android, using the Android NDK. It differs from most of the other NDK FFMPEG building packages in that it uses configure and make to build the libraries, and only a very small Android.mk file, rather than a large handful of custom build scripts. The latter tend to break as soon as any files move around in the FFMPEG project, whereas here it should always be able to build the latest version.
 
 I haven't committed the build scripts yet so at the moment it's just got a couple of submodules that will fetch the two libraries for you.
