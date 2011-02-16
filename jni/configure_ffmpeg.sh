@@ -2,6 +2,17 @@
 pushd `dirname $0`
 . settings.sh
 
+# i use only a small number of formats - set this to 0 if you want everything.
+minimal_featureset=1
+
+if [[ $minimal_featureset == 1 ]]; then
+  $featureflags = "--disable-everything \
+--enable-decoder=mjpeg --enable-demuxer=mjpeg --enable-parser=mjpeg \
+--enable-muxer=mp4 --enable-encoder=libx264 --enable-libx264 \
+--enable-protocol=file \
+--enable-hwaccels"
+fi
+
 pushd ffmpeg
 
 ./configure --enable-cross-compile \
@@ -19,11 +30,7 @@ pushd ffmpeg
 --cc=arm-linux-androideabi-gcc \
 --ld=arm-linux-androideabi-ld \
 --extra-cflags="-fPIC -DANDROID -D__thumb__ -mthumb" \
---disable-everything \
---enable-decoder=mjpeg --enable-demuxer=mjpeg --enable-parser=mjpeg \
---enable-muxer=mp4 --enable-encoder=libx264 --enable-libx264 \
---enable-protocol=file \
---enable-hwaccels \
+$featureflags \
 --disable-ffmpeg \
 --disable-ffplay \
 --disable-ffprobe \
