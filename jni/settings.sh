@@ -1,6 +1,8 @@
 # set to path of your NDK
 
 NDK=~/code/android-ndk-r5b
+# i use only a small number of formats - set this to 0 if you want everything.
+minimal_featureset=1
 
 ## stop editing
 
