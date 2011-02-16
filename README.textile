@@ -19,3 +19,4 @@ You can edit @jni/videokit/videokit_interface.c@ to do whatever you want with th
 h2. Options
 
 * @minimal_featureset@ - on by default - only compiles in a small number of codecs (specifically, JPEG decoding and x264 encoding). Change to 0 in @settings.sh@ if you want everything, or just add whatever configure flags you like to pick the codecs and things that are useful to you.
+* If you have already created a standalone toolchain, just edit @settings.sh@ to make the PATH point at its bin directory. Then you don't need to run @create_toolchain.sh@. If you have compilation problems, it's worth making a fresh toolchain in case you're using a slightly older version.
