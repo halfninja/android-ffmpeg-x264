@@ -15,3 +15,7 @@ h2. How to build it
 # If all is well, you should find @libs/armeabi/videokit.so@.
 
 You can edit @jni/videokit/videokit_interface.c@ to do whatever you want with the built libraries - if you make any changes to it, just run ndk-build to link it together with the static libraries.
+
+h2. Options
+
+* @minimal_featureset@ - on by default - only compiles in a small number of codecs (specifically, JPEG decoding and x264 encoding). Change to 0 in @settings.sh@ if you want everything, or just add whatever configure flags you like to pick the codecs and things that are useful to you.
