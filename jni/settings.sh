@@ -1,6 +1,6 @@
 # set to path of your NDK
 
-NDK=~/apps/android-ndk-r5b
+NDK=~/Apps/android-ndk-r5c
 # i use only a small number of formats - set this to 0 if you want everything.
 minimal_featureset=1
 
