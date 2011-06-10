@@ -33,9 +33,6 @@ $featureflags \
 --disable-ffprobe \
 --disable-ffserver \
 --disable-network \
-#--disable-mpegaudio-hp \
-#--disable-avdevice \
---enable-zlib \
 --extra-cflags="-I../x264" \
 --extra-ldflags="-L../x264" 
 
