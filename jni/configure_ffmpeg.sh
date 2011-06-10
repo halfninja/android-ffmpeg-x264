@@ -3,7 +3,7 @@ pushd `dirname $0`
 . settings.sh
 
 if [[ $minimal_featureset == 1 ]]; then
-  $featureflags = "--disable-everything \
+  featureflags="--disable-everything \
 --enable-decoder=mjpeg --enable-demuxer=mjpeg --enable-parser=mjpeg \
 --enable-muxer=mp4 --enable-encoder=libx264 --enable-libx264 \
 --enable-protocol=file \
@@ -33,8 +33,8 @@ $featureflags \
 --disable-ffprobe \
 --disable-ffserver \
 --disable-network \
---disable-mpegaudio-hp \
---disable-avdevice \
+#--disable-mpegaudio-hp \
+#--disable-avdevice \
 --enable-zlib \
 --extra-cflags="-I../x264" \
 --extra-ldflags="-L../x264" 
