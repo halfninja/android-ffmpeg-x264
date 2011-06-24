@@ -14,7 +14,7 @@ h2. How to build it
 # @ndk-build@ (make sure the NDK is in your $PATH)
 # If all is well, you should find @libs/armeabi/videokit.so@.
 
-You can edit @jni/videokit/videokit_interface.c@ to do whatever you want with the built libraries - if you make any changes to it, just run ndk-build to link it together with the static libraries.
+You can edit @jni/videokit/jni_interface.c@ to do whatever you want with the built libraries - if you make any changes to it, just run ndk-build to link it together with the static libraries.
 
 h2. Options
 
