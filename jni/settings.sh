@@ -2,7 +2,8 @@
 
 NDK=~/Apps/android-ndk-r5c
 # i use only a small number of formats - set this to 0 if you want everything.
-minimal_featureset=1
+# changed 0 to the default, so it'll compile shitloads of codecs normally
+minimal_featureset=0
 
 ## stop editing
 

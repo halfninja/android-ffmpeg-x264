@@ -28,7 +28,7 @@ pushd ffmpeg
 --enable-memalign-hack \
 --cc=arm-linux-androideabi-gcc \
 --ld=arm-linux-androideabi-ld \
---extra-cflags="-fPIC -DANDROID -D__thumb__ -mthumb -pedantic" \
+--extra-cflags="-fPIC -DANDROID -D__thumb__ -mthumb -Wfatal-errors -Wno-deprecated" \
 $featureflags \
 --disable-ffmpeg \
 --disable-ffplay \
@@ -37,6 +37,8 @@ $featureflags \
 --disable-network \
 --disable-demuxer=v4l \
 --disable-demuxer=v4l2 \
+--disable-indev=v4l \
+--disable-indev=v4l2 \
 --extra-cflags="-I../x264" \
 --extra-ldflags="-L../x264" 
 
