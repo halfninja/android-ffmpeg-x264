@@ -1,9 +1,15 @@
-# set to path of your NDK
+#!/bin/bash
 
-NDK=~/Apps/android-ndk-r5c
+# set to path of your NDK (or export NDK to environment)
+
+if [[ "x$NDK" == "x" ]]; then
+NDK=~/apps/android-ndk-r5c
+fi
 # i use only a small number of formats - set this to 0 if you want everything.
 # changed 0 to the default, so it'll compile shitloads of codecs normally
-minimal_featureset=0
+if [[ "x$minimal_featureset" == "x" ]]; then
+minimal_featureset=1
+fi
 
 ## stop editing
 
