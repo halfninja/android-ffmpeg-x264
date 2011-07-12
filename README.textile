@@ -6,6 +6,7 @@ There is a skeletal JNI file that defines a few JNI files, but it really needs s
 
 h2. How to build it
 
+# Get the NDK, obvs
 # Run @./init-submodules.sh@ to pull in the FFMPEG and libx264 submodules.
 # @cd jni@
 # Edit @settings.sh@ to set NDK to the path of your Android NDK.

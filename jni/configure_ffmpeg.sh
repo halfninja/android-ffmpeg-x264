@@ -35,6 +35,8 @@ $featureflags \
 --disable-ffprobe \
 --disable-ffserver \
 --disable-network \
+--enable-filter=buffer \
+--enable-filter=buffersink \
 --disable-demuxer=v4l \
 --disable-demuxer=v4l2 \
 --disable-indev=v4l \
