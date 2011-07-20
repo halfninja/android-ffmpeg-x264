@@ -1,10 +1,8 @@
 
-#include "libavformat/avformat.h"
-#include "libavdevice/avdevice.h"
-#include "libswscale/swscale.h"
+#include "ffmpeg.c"
 
 #include <android/log.h>
-#include "jni_interface.h"
+#include "uk_co_halfninja_videokit_Videokit.h"
 
 #include <stdlib.h>
 #include <stdbool.h>
@@ -28,6 +26,27 @@ int throwException(JNIEnv *env, const char* message)
   (*env)->ThrowNew(env, newExcCls, message);
   (*env)->DeleteLocalRef(env, newExcCls);
   return EXCEPTION_CODE;
+}
+
+
+JNIEXPORT void JNICALL Java_uk_co_halfninja_videokit_Videokit_run(JNIEnv *env, jobject obj, jobjectArray args)
+{
+	int i = 0;
+	int argc = 0;
+	char **argv = NULL;
+
+	if (args != NULL) {
+		argc = (*env)->GetArrayLength(env, args);
+		argv = (char **) malloc(sizeof(char *) * argc);
+
+		for(i=0;i<argc;i++)
+		{
+			jstring str = (jstring)(*env)->GetObjectArrayElement(env, args, i);
+			argv[i] = (char *)(*env)->GetStringUTFChars(env, str, NULL);   
+		}
+	}	
+
+	main(argc, argv);
 }
 
 JNIEXPORT void JNICALL Java_uk_co_halfninja_videokit_Videokit_initialise(JNIEnv *env, jobject self)
