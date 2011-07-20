@@ -7,6 +7,8 @@ if [ $? == 0 ]; then
   exit 1
 fi
 
+
 git submodule init
 git config -l
 git submodule update
+

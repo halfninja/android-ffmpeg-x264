@@ -1,17 +1,24 @@
 
-#include "libavformat/avformat.h"
-#include "libavdevice/avdevice.h"
-#include "libswscale/swscale.h"
 
 #include <android/log.h>
-#include "jni_interface.h"
+#include "logjam.h"
+#include "uk_co_halfninja_videokit_Videokit.h"
 
 #include <stdlib.h>
 #include <stdbool.h>
 
-AVFormatContext *pFormatCtx;
-
 bool initted = false;
+
+int main(int argc, char **argv);
+
+static JavaVM *sVm;
+
+JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *jvm, void *reserved)
+{
+	LOGI("Loading native library compiled at " __TIME__ " " __DATE__);
+	sVm = jvm;
+	return JNI_VERSION_1_2;
+}
 
 // the fuck is this exit shit doing
 #define exit exit_function_not_allowed
@@ -30,6 +37,30 @@ int throwException(JNIEnv *env, const char* message)
   return EXCEPTION_CODE;
 }
 
+
+JNIEXPORT void JNICALL Java_uk_co_halfninja_videokit_Videokit_run(JNIEnv *env, jobject obj, jobjectArray args)
+{
+	LOGD("run() called");
+	int i = 0;
+	int argc = 0;
+	char **argv = NULL;
+
+	if (args != NULL) {
+		argc = (*env)->GetArrayLength(env, args);
+		argv = (char **) malloc(sizeof(char *) * argc);
+
+		for(i=0;i<argc;i++)
+		{
+			jstring str = (jstring)(*env)->GetObjectArrayElement(env, args, i);
+			argv[i] = (char *)(*env)->GetStringUTFChars(env, str, NULL);   
+		}
+	}	
+
+	LOGD("run passing off to main()");
+	main(argc, argv);
+}
+
+#if 0
 JNIEXPORT void JNICALL Java_uk_co_halfninja_videokit_Videokit_initialise(JNIEnv *env, jobject self)
 {
   if (!initted) 
@@ -49,3 +80,6 @@ JNIEXPORT void JNICALL Java_uk_co_halfninja_videokit_Videokit_setSize (JNIEnv *e
   LOG_INFO("Let's throw an exception!");
   throwException(env, "Bam, not supported");
 }
+
+#endif
+
