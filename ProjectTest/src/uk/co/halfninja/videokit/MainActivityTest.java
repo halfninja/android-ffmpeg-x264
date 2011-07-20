@@ -1,6 +1,6 @@
 package uk.co.halfninja.videokit;
 
-import android.test.ActivityInstrumentationTestCase2;
+import android.test.InstrumentationTestCase;
 
 /**
  * This is a simple framework for a test of an Application.  See
@@ -12,10 +12,18 @@ import android.test.ActivityInstrumentationTestCase2;
  * -e class uk.co.halfninja.videokit.MainActivityTest \
  * uk.co.halfninja.videokit.tests/android.test.InstrumentationTestRunner
  */
-public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActivity> {
+public class MainActivityTest extends InstrumentationTestCase {
 
     public MainActivityTest() {
-        super("uk.co.halfninja.videokit", MainActivity.class);
+//        super("uk.co.halfninja.videokit", MainActivity.class);
+    }
+
+    public void testVideokit() {
+        Videokit vk = new Videokit();
+        vk.run(new String[]{
+            "ffmpeg", "-version"
+        });
+        assertNotNull(vk);
     }
 
 }
