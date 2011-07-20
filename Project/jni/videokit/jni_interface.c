@@ -1,5 +1,4 @@
 
-#include "ffmpeg.c"
 
 #include <android/log.h>
 #include "uk_co_halfninja_videokit_Videokit.h"
@@ -7,9 +6,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-AVFormatContext *pFormatCtx;
-
 bool initted = false;
+
+int main(int argc, char **argv);
 
 // the fuck is this exit shit doing
 #define exit exit_function_not_allowed
@@ -49,6 +48,7 @@ JNIEXPORT void JNICALL Java_uk_co_halfninja_videokit_Videokit_run(JNIEnv *env, j
 	main(argc, argv);
 }
 
+#if 0
 JNIEXPORT void JNICALL Java_uk_co_halfninja_videokit_Videokit_initialise(JNIEnv *env, jobject self)
 {
   if (!initted) 
@@ -68,3 +68,6 @@ JNIEXPORT void JNICALL Java_uk_co_halfninja_videokit_Videokit_setSize (JNIEnv *e
   LOG_INFO("Let's throw an exception!");
   throwException(env, "Bam, not supported");
 }
+
+#endif
+
