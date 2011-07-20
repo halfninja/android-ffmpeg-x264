@@ -76,4 +76,14 @@
     -->
     <setup />
 
+    <target name="jni" depends="compile">
+      <exec executable="javah">
+        <arg value="-classpath" />
+        <arg value="bin/classes" />
+        <arg value="-d" />
+        <arg value="jni/videokit/" />
+        <arg value="uk.co.halfninja.videokit.Videokit" />  
+      </exec>
+    </target>
+
 </project>
