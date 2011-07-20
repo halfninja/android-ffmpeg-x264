@@ -2,6 +2,8 @@
 
 # set to path of your NDK (or export NDK to environment)
 
+export DEBUG=1
+
 if [[ "x$NDK" == "x" ]]; then
 NDK=~/apps/android-ndk-r5c
 fi

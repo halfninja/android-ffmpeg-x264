@@ -280,8 +280,7 @@ __android_log_print(ANDROID_LOG_WARN, TAG,  "Post prepare_app_arguments\n");
 unknown_opt:
 		 LOGI("UNREC.\n");
  		LOGI("%s: unrecognized option '%s'\n", argv[0], opt);
-		jniThrowException(getJNIEnv(), 
-                          "java/lang/RuntimeException",
+		throwException(getJNIEnv(), 
                           "unrecognised option");
 
                 //LOGE("%s: unrecognized option '%s'\n", argv[0], opt);
@@ -294,8 +293,7 @@ unknown_opt:
                 if (!arg) {
 		    LOGI("MISSARG.\n");
  			LOGI("%s: missing argument for option '%s'\n", argv[0], opt);
-			jniThrowException(getJNIEnv(), 
-                          "java/lang/RuntimeException",
+			throwException(getJNIEnv(), 
                           "missing argument for option");
 
                     //LOGE("%s: missing argument for option '%s'\n", argv[0], opt);
@@ -318,8 +316,7 @@ unknown_opt:
                 if (po->u.func_arg(opt, arg) < 0) {
 
  			LOGE("%s: failed to set value '%s' for option '%s'\n", argv[0], arg ? arg : "[null]", opt);
-			jniThrowException(getJNIEnv(), 
-                          "java/lang/RuntimeException",
+			throwException(getJNIEnv(), 
                           "Failed to set value for option");
 
                     //LOGE("%s: failed to set value '%s' for option '%s'\n", argv[0], arg ? arg : "[null]", opt);
