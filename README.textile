@@ -2,6 +2,8 @@ h1. Read me first (that's why I'm at the top!)
 
 At the moment, although this project builds and generates a shared library, the JNI interface is still in progress, and at the moment I'm having trouble getting it to encode anything.
 
+*21st July 2011* - I've merged some changes from a branch into master, which move a lot of the directories around. You might have trouble updating due to the submodules which git doesn't seem to like moving - try a fresh checkout or deleting the ffmpeg and x264 directories first. Sorry if you've got a checked out copy and this has ruined your party - I wanted to do this one change so that the code's sitting in an Android project with a test project next to it, to make it much easier to build, package and test.
+
 h1. Android Videokit
 
 This is a repository to make it relatively simple to fetch and build the latest FFMPEG and libx264 to run on Android, using the Android NDK. It differs from most of the other NDK FFMPEG building packages in that it uses configure and make to build the libraries, and only a very small Android.mk file to pack it into a shared library, rather than a large handful of custom @Android.mk@ scripts (there are still a few script files but most of them are pretty small or are lists of configure options). Big custom @Android.mk@ files tend to break as soon as any files move around in the FFMPEG project, whereas here it should keep working with the latest libraries.
