@@ -1,6 +1,6 @@
 h1. Read me first (that's why I'm at the top!)
 
-At the moment, although this project builds and generates a shared library, the JNI interface is still in progress, and at the moment I'm having trouble getting it to encode anything.
+At the moment, although this project builds and generates a shared library, the JNI interface is still in progress, and at the moment I'm having some problems with input files (I think most inputs are fine but it doesn't recognise JPEG sequences).
 
 *21st July 2011* - I've merged some changes from a branch into master, which move a lot of the directories around. You might have trouble updating due to the submodules which git doesn't seem to like moving - try a fresh checkout or deleting the ffmpeg and x264 directories first. Sorry if you've got a checked out copy and this has ruined your party - I wanted to do this one change so that the code's sitting in an Android project with a test project next to it, to make it much easier to build, package and test.
 
@@ -11,6 +11,8 @@ This is a repository to make it relatively simple to fetch and build the latest 
 There is a skeletal JNI interface - the version here simply supplies run(String[]) which is passed to ffmpeg.c's origin main() function. Once I've got this properly encoding again, I'll make some more convenient methods.
 
 h2. How to build it
+
+You'll need to git clone in order to have access to the submodules. You might be able to use a ZIP download but then you'll have to skip the init-submodules step and acquire FFmpeg and x264 from elsewhere; if you do this and something doesn't work then I really can't help you. Use git, it's good!
 
 First time stuff:
 
