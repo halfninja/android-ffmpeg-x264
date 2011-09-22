@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ls -A `dirname $0`jni/ffmpeg/* 2>&1 1>/dev/null
+ls -A `dirname $0`/jni/ffmpeg/* 2>&1 1>/dev/null
 
 if [ $? == 0 ]; then
   echo "ffmpeg directory isn't empty. Have you already done this?"
