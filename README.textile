@@ -1,8 +1,6 @@
 h1. Read me first (that's why I'm at the top!)
 
-At the moment, although this project builds and generates a shared library, the JNI interface is still in progress, and at the moment I'm having some problems with input files (I think most inputs are fine but it doesn't recognise JPEG sequences).
-
-*21st July 2011* - I've merged some changes from a branch into master, which move a lot of the directories around. You might have trouble updating due to the submodules which git doesn't seem to like moving - try a fresh checkout or deleting the ffmpeg and x264 directories first. Sorry if you've got a checked out copy and this has ruined your party - I wanted to do this one change so that the code's sitting in an Android project with a test project next to it, to make it much easier to build, package and test.
+I'm not going to be working on this at all for the forseeable future, and I won't have time to answer questions about why it doesn't compile on your platform or has something missing.
 
 h1. Android Videokit
 
