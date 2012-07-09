@@ -14,7 +14,7 @@ You'll need to git clone in order to have access to the submodules. You might be
 
 First time stuff:
 
-# Run @./init-submodules.sh@ to pull in the FFMPEG and libx264 submodules.
+# Clone using the @--recursive@ switch. (Or clone normally and run @./init-submodules.sh@ to pull in the FFMPEG and libx264 submodules.)
 # @cd Project/jni@
 # do @export NDK=~/apps/android-ndk-r5c@ using the actual path of your Android NDK.
 # Run @./create_toolchain.sh@ to install a local copy of the standalone toolchain
