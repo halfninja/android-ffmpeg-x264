@@ -535,8 +535,6 @@ static int ffmpeg_exit(int ret)
 {
     int i;
 
-    LOGE("ffmpeg_exit(%d) called!", ret);
-
     /* close files */
     for(i=0;i<nb_output_files;i++) {
         AVFormatContext *s = output_files[i];
@@ -589,7 +587,8 @@ static int ffmpeg_exit(int ret)
         exit (255);
     }
 
-    exit(ret); /* not all OS-es handle main() return value */
+// Do NOT use exit() in JNI!
+//    exit(ret); /* not all OS-es handle main() return value */
     return ret;
 }
 
@@ -4574,24 +4573,24 @@ LOGD("main(): parsed options");
     if(nb_output_files <= 0 && nb_input_files == 0) {
         show_usage();
         LOGE( "Use -h to get full help or, even better, run 'man ffmpeg'\n");
-	return 1;
+        return ffmpeg_exit(1);
     }
 
     /* file converter / grab */
     if (nb_output_files <= 0) {
         LOGE( "At least one output file must be specified\n");
-	return 1;
+        return ffmpeg_exit(1);
     }
 
     if (nb_input_files == 0) {
         LOGE( "At least one input file must be specified\n");
-	return 1;
+        return ffmpeg_exit(1);
     }
 
     ti = getutime();
     if (transcode(output_files, nb_output_files, input_files, nb_input_files,
                   stream_maps, nb_stream_maps) < 0) {
-	return 1;
+        return ffmpeg_exit(1);
     }
     ti = getutime() - ti;
     if (do_benchmark) {
@@ -4599,5 +4598,5 @@ LOGD("main(): parsed options");
         printf("bench: utime=%0.3fs maxrss=%ikB\n", ti / 1000000.0, maxrss);
     }
 
-    return 0;
+    return ffmpeg_exit(0);
 }
