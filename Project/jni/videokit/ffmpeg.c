@@ -118,6 +118,9 @@ static const OptionDef options[];
 
 #define MAX_STREAMS 1024    /* arbitrary sanity check value */
 
+// Keep track of if we already ran ffmpeg once or not.
+static int initialized = 0;
+
 static int frame_bits_per_raw_sample = 0;
 static int video_discard = 0;
 static int same_quant = 0;
@@ -733,7 +736,13 @@ void exit_program(int ret)
 	nb_frames_drop = 0;
 	dts_delta_threshold = 10;
 	print_stats = 1;
-	input_tmp= NULL;
+
+	input_sync = 0;
+	audio_buf = 0;
+	audio_out = 0;
+	allocated_audio_out_size, allocated_audio_buf_size = 0;
+
+	input_tmp = NULL;
 	input_streams = NULL;
 	nb_input_streams = 0;
 	input_files   = NULL;
@@ -4879,19 +4888,23 @@ int main(int argc, char **argv)
         argv++;
     }
 
-    avcodec_register_all();
+	if (!initialized) {
+		LOGI("Initializing AV codecs");
+    	avcodec_register_all();
 #if CONFIG_AVDEVICE
-    avdevice_register_all();
+    	avdevice_register_all();
 #endif
 #if CONFIG_AVFILTER
-    avfilter_register_all();
+    	avfilter_register_all();
 #endif
-    av_register_all();
-    avformat_network_init();
+    	av_register_all();
+    	avformat_network_init();
 
-    show_banner(argc, argv, options);
+    	show_banner(argc, argv, options);
 
-    term_init();
+    	term_init();
+		initialized = 1;
+	}
 
     /* parse options */
     parse_options(&o, argc, argv, options, opt_output_file);
