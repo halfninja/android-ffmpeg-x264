@@ -26,7 +26,7 @@ pushd ffmpeg
 --disable-stripping \
 --prefix=../output \
 --disable-neon \
---enable-version3 \
+--enable-version3 --ar=arm-linux-androideabi-ar \
 --disable-shared \
 --enable-static \
 --enable-gpl \

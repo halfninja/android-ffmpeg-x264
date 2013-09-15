@@ -6,10 +6,11 @@ LOCAL_MODULE  := videokit
 FFMPEG_LIBS := $(addprefix ffmpeg/, \
  libavdevice/libavdevice.a \
  libavformat/libavformat.a \
- libavcodec/libavcodec.a \
  libavfilter/libavfilter.a \
+ libavcodec/libavcodec.a \
  libswscale/libswscale.a \
  libavutil/libavutil.a \
+ libswresample/libswresample.a \
  libpostproc/libpostproc.a )
 # ffmpeg uses its own deprecated functions liberally, so turn off that annoying noise
 LOCAL_CFLAGS += -g -Iffmpeg -Ivideokit -Wno-deprecated-declarations 
@@ -23,10 +24,11 @@ LOCAL_MODULE  := ffmpeg
 FFMPEG_LIBS := $(addprefix ffmpeg/, \
  libavdevice/libavdevice.a \
  libavformat/libavformat.a \
- libavcodec/libavcodec.a \
  libavfilter/libavfilter.a \
+ libavcodec/libavcodec.a \
  libswscale/libswscale.a \
  libavutil/libavutil.a \
+ libswresample/libswresample.a \
  libpostproc/libpostproc.a )
 LOCAL_CFLAGS += -g -Iffmpeg -Ivideokit -Wno-deprecated-declarations 
 LOCAL_LDLIBS += -llog -lz $(FFMPEG_LIBS) x264/libx264.a
